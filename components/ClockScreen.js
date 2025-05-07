@@ -9,12 +9,9 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-// Helper function to pad numbers with leading zeros
 const padZero = (num) => num.toString().padStart(2, "0");
 
-// Placeholder image URL for corner icon
 const CORNER_ICON_URL = "../assets/clock.png";
-// Or use local asset: const cornerIcon = require('../assets/your-icon.png');
 
 export default function ClockScreen({ route }) {
   const { city } = route.params;
@@ -28,12 +25,10 @@ export default function ClockScreen({ route }) {
         if (storedTime !== null) {
           setRandomTime(storedTime);
         } else {
-          // Generate random time components
           const randomHour = Math.floor(Math.random() * 24);
           const randomMinute = Math.floor(Math.random() * 60);
           const randomSecond = Math.floor(Math.random() * 60);
 
-          // Format the time string
           const timeString = `${padZero(randomHour)}:${padZero(
             randomMinute
           )}:${padZero(randomSecond)}`;
@@ -43,7 +38,7 @@ export default function ClockScreen({ route }) {
         }
       } catch (e) {
         console.error("Failed to load or save time.", e);
-        // Fallback to generating time without saving if AsyncStorage fails
+
         const randomHour = Math.floor(Math.random() * 24);
         const randomMinute = Math.floor(Math.random() * 60);
         const randomSecond = Math.floor(Math.random() * 60);
@@ -55,7 +50,7 @@ export default function ClockScreen({ route }) {
     };
 
     loadTime();
-  }, [city.timezone, city.name]); // Ensure effect runs if city changes
+  }, [city.timezone, city.name]);
 
   return (
     <View style={styles.container}>
@@ -72,7 +67,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#2c3e50", // Dark blue background
+    backgroundColor: "#2c3e50",
     padding: 20,
   },
   cornerIcon: {
@@ -81,26 +76,26 @@ const styles = StyleSheet.create({
     right: 20,
     width: 30,
     height: 30,
-    opacity: 0.8, // Make it slightly transparent
+    opacity: 0.8,
   },
   title: {
-    fontSize: 34, // Slightly larger
-    fontWeight: "300", // Lighter font weight
-    color: "#ecf0f1", // Light grey/white color
-    marginBottom: 15, // Space below title
+    fontSize: 34,
+    fontWeight: "300",
+    color: "#ecf0f1",
+    marginBottom: 15,
     textAlign: "center",
   },
   timeDisplay: {
-    fontSize: 64, // Much larger font for the time
+    fontSize: 64,
     fontWeight: "bold",
-    color: "#ffffff", // White color for time
-    marginBottom: 20, // Space below time
-    fontFamily: Platform.OS === "ios" ? "Courier New" : "monospace", // Monospaced font
-    letterSpacing: 2, // Add some spacing between characters
-  },
-  timezoneInfo: {
-    fontSize: 16,
-    color: "#bdc3c7", // Lighter grey color
-    fontStyle: "italic",
+    color: "#ffffff",
+    marginBottom: 20,
+    fontFamily: Platform.OS === "ios" ? "Courier New" : "monospace",
+    letterSpacing: 2,
+    timezoneInfo: {
+      fontSize: 16,
+      color: "#bdc3c7", // Lighter grey color
+      fontStyle: "italic",
+    },
   },
 });
