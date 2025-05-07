@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "WeatherApp",
-    "slug": "WeatherApp",
+    "name": "ClockApp",
+    "slug": "ClockApp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/clock.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
